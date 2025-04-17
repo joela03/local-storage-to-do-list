@@ -49,16 +49,17 @@ function displayTasks() {
 
 // Function to remove a task from the list - function name removeTask()
 function removeTasks(index) {
-
 // 1. Get the current list of tasks from LocalStorage and turn it into an array
     let tasks = JSON.parse(localStorage.getItem("tasks"));
+
+    if (!tasks[index]) return
 // 2. Remove 1 task from the array at the given index - use splice method
     tasks.splice(index, 1);
 // 3. Save the updated tasks back into LocalStorage
     localStorage.setItem("tasks", JSON.stringify(tasks));
 // 4. Update the display so the removed task disappears from the screen
-    
+    displayTasks()
 // 5. Automatically run displayTasks() when the page loads
 // So any saved tasks show up immediately
-    displayTasks()
 }
+removeTasks(6)
