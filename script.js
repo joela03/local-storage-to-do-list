@@ -1,6 +1,11 @@
 //  Function to add a new task
 // Get the input field element using its ID "task"
 
+function addTask() {
+    const task = document.getElementById("task").value;
+    localStorage.setItem("task", task);
+}
+
 // 1. Get the existing tasks from LocalStorage - name variable "tasks"
 // JSON.parse turns the string back into an array
 // If there are no tasks yet, use an empty array []
