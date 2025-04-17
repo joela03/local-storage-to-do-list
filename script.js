@@ -1,23 +1,32 @@
 //  Function to add a new task
 // Get the input field element using its ID "task"
-
 function addTask() {
-    const task = document.getElementById("task").value;
-    localStorage.setItem("task", task);
-}
-
 // 1. Get the existing tasks from LocalStorage - name variable "tasks"
+    const tasksStr = localStorage.getItem("tasks");
 // JSON.parse turns the string back into an array
 // If there are no tasks yet, use an empty array []
+    let tasks;
+    if (tasksStr){
+        tasks = JSON.parse(tasksStr);
+    } else {
+        tasks = []
+    };
 
-// 2. Push (add) the value typed by the user into the tasks array
+// // 2. Push (add) the value typed by the user into the tasks array
+    const newTask = document.getElementById("task").value;
+    tasks.push(newTask);
 
-// 3. Convert the updated tasks array into a string and store it in LocalStorage
-// This is required because LocalStorage can only save strings
+// // 3. Convert the updated tasks array into a string and store it in LocalStorage
+// // This is required because LocalStorage can only save strings
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 
-// 4. Call the function to display the updated tasks on the screen - name of called function is displayTasks()
+// // 4. Call the function to display the updated tasks on the screen - name of called function is displayTasks()
+    // displayTasks();
 
-// 5. Clear the input field after adding the task
+// // 5. Clear the input field after adding the task
+    const input = document.getElementById("task");
+    input.value = "";
+}
 
 // Function displayTasks() to display all tasks from LocalStorage
 
